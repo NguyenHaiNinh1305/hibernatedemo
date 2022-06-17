@@ -1,6 +1,5 @@
 package com.demo.entity;
 
-import com.demo.utils.InputNumberUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,12 +27,6 @@ public class Route implements Serializable {
   private int busStop;
 
 
-  public void input() {
 
-    System.out.println("Input distance: ");
-    distance = InputNumberUtil.returnFloatVar();
-    System.out.println("Input number of busstop: ");
-    busStop = InputNumberUtil.returnInt();
-  }
 
 }

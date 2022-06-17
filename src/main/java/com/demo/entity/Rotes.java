@@ -6,40 +6,30 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-@Entity
 @Table(name = "Rotes")
+@Entity
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
+@IdClass(Rotes.class)
 public class Rotes implements Serializable {
+
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GEN_ID_Rotes")
-  @SequenceGenerator(name = "GEN_ID_Rotes", sequenceName = "SEQ_Rotes", allocationSize = 1)
-  @Column(name = "Rotes_id")
-  private int id;
+  @Column(name = "driver_id")
+  private int driver_id;
 
-  @OneToOne
-  @JoinColumn(name = "driver_id", referencedColumnName = "driver_id")
-  private Driver driver;
+  @Id
+  @Column(name = "route_id")
+  private int route_id;
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "rotes")
-  private List<RouteAndTimes> routeAndTimes;
+  @Column(name = "times", nullable = false)
+  private int times;
 
-  public int getTotalTask() {
-    int sum = 0;
-    for (int i = 0; i < routeAndTimes.size(); i++) {
-      sum += routeAndTimes.get(i).getTimesDrive();
-    }
-    return sum;
-  }
+  @Column(name = "date_assign_task")
+  @Temporal(value = TemporalType.DATE)
+  private Date dateAssignTask;
 
-  public float getTotalDistance() {
-    float sum = 0;
-    for (int i = 0; i < routeAndTimes.size(); i++) {
-      sum += routeAndTimes.get(i).getRoute().getDistance() * routeAndTimes.get(i).getTimesDrive();
-    }
-    return sum;
-  }
 }

@@ -4,7 +4,7 @@
 
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.Oracle9iDialect</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
     <property name="hibernate.connection.username">ncn</property>
@@ -16,7 +16,7 @@
     <property name="hibernate.connection.useUnicode">true</property>
     <property name="hibernate.connection.defaultNChar">true</property>
 
-    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
 
     <!-- Cấu hình batch (đẩy dữ liệu theo một tập, tiết kiệm công) -->
     <property name="hibernate.jdbc.batch_size">50</property>
@@ -37,6 +37,5 @@
     <mapping class="com.demo.entity.Driver"/>
     <mapping class="com.demo.entity.Rotes"/>
     <mapping class="com.demo.entity.Route"/>
-    <mapping class="com.demo.entity.RouteAndTimes"/>
   </session-factory>
 </hibernate-configuration>
